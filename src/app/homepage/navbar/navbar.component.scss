@@ -3,7 +3,7 @@ a {
 }
 
 .navbar {
-    background: transparent;
+    background: linear-gradient(to bottom, black 0%, rgba(0, 0, 0, 0) 100%);
     font-size: 1.6rem;
     padding: 3rem; 
     clear: both;
@@ -17,8 +17,13 @@ a {
     }
     #navbarSupportedContent {
         ul {
-            li:not(:last-child) {
-                margin-right: 2rem;
+            li {
+                margin-right: 0rem;
+                padding: 0rem 1rem;
+            }
+            li:hover {
+                background: #e50914;
+                border-radius: 5px;
             }
         }
         form {
@@ -37,7 +42,7 @@ a {
 
             input:focus {
                 width: 100%; 
-                border: solid 2px red; 
+                border: solid 2px #e50914; 
             }
             ::-webkit-input-placeholder {
                 font-size: 1.6rem;

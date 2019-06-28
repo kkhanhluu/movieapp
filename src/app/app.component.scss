@@ -1,0 +1,34 @@
+.background__content {
+  background-image: url('https://images.alphacoders.com/633/633643.jpg');
+  -webkit-filter: brightness(0.8);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh; 
+  width: 100vw;
+  z-index: -10; 
+}
+.app__container {
+  position: absolute;
+  z-index: 100;
+  font-size: 1.6rem;
+  padding: 2rem 3rem;
+  color: white;
+  display: flex; 
+  flex-direction: column;
+
+  .navbar__container {
+    height: 10rem !important; 
+  }
+
+  .header__content {
+    width: 50%;
+    
+    h2 {
+      padding-left: 2rem;
+    }
+  }
+}

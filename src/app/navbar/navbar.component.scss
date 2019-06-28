@@ -1,0 +1,47 @@
+a {
+    color: white;
+}
+
+.navbar {
+    background: transparent;
+    font-size: 1.6rem;
+    padding: 3rem; 
+    clear: both;
+
+    .navbar-brand {
+        margin-left: 2rem;
+        img {
+            width: 20rem; 
+            height: 6rem;
+        }
+    }
+    #navbarSupportedContent {
+        ul {
+            li:not(:last-child) {
+                margin-right: 2rem;
+            }
+        }
+        form {
+            margin-left: 3rem;
+            width: 30%;
+            input {
+                border-radius: 20px;
+                width: 80%;
+                background: transparent;
+                border: solid 2px #565E64; 
+                font-size: 1.6rem;
+                padding: 1.5rem 2rem;
+                transition: all .2s;
+                color: white;
+            }
+
+            input:focus {
+                width: 100%; 
+                border: solid 2px red; 
+            }
+            ::-webkit-input-placeholder {
+                font-size: 1.6rem;
+            }
+        }
+    }
+}

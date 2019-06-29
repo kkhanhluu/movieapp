@@ -10,7 +10,6 @@ import { Movie } from 'src/app/model/movie';
 export class FilmlistComponent {
 
   private movies: Movie[] = [];
-  private indexes: number[] = Array(20).fill(0).map((x, i) => i); 
   
   constructor(private filmService: FilmServiceService) {
     this.filmService.discoverMovies().subscribe(result => this.movies = result.results); 

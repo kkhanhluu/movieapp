@@ -24,20 +24,25 @@
         overflow: hidden;
         padding: 3rem 0;
 
-        a img {
-          max-height: 278px;
-          min-height: 278px;
-          transition: all .4s ease;
+        a {
+          text-decoration: none;
+          color: white;
+          img {
+            max-height: 278px;
+            min-height: 278px;
+            transition: all 0.4s ease;
+          }
         }
       }
 
       .movie__poster-container:hover {
+        cursor: pointer;
         .movie__overlay {
-            opacity: 1;
+          opacity: 1;
         }
         a img {
-            transform: scale(1.2);
-        } 
+          transform: scale(1.2);
+        }
       }
 
       .movie__overlay {
@@ -55,25 +60,25 @@
         );
         padding: 2rem;
         opacity: 0;
-        text-align: left; 
+        text-align: left;
         overflow: hidden;
         pointer-events: all;
-        transition: opacity .125s ease; 
+        transition: opacity 0.125s ease;
 
         .movie__overlay--title {
-            font-size: 2rem; 
-            font-weight: 200; 
-            transition: opacity .25s ease;
+          font-size: 2rem;
+          font-weight: 200;
+          transition: opacity 0.25s ease;
         }
 
         .movie__overlay--vote {
-            transition: opacity .25s ease .125s;
+          transition: opacity 0.25s ease 0.125s;
         }
 
         .movie__overlay--overview {
-            font-weight: 300; 
-            line-height: 1.6;
-            text-overflow: ellipsis;
+          font-weight: 300;
+          line-height: 1.6;
+          text-overflow: ellipsis;
         }
       }
 

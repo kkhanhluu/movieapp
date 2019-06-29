@@ -1,0 +1,34 @@
+.container__custom {
+    background-color: #221F1F;
+    color: white;
+    margin-top: -1rem;
+
+    h1 {
+        padding-left: 7vw;
+    }
+    .movie__list {
+        padding: 2rem;
+        display: flex; 
+        justify-content: center;
+        flex-wrap: wrap; 
+        .movie {
+            margin: 1rem .625rem;
+            width: 20%; 
+            text-align: center;
+            a img {
+                max-height: 278px;
+                min-height: 278px;
+            }
+            .movie__title {
+                margin: 2rem 0 0 0; 
+                color: #ff424f; 
+                font-size: 1.9rem; 
+            }
+            .movie__date {
+                margin: 0; 
+                color: #fff;
+                font-size: 1.6rem;
+            }
+        }
+    }
+}

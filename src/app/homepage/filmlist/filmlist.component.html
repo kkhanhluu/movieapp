@@ -1,1 +1,14 @@
-<p>filmlist works!</p>
+<div class="container__custom">
+    <h1>Top movie Now-playing</h1>
+    <div class="movie__list" *ngIf="movies && movies.length > 0; else noData">
+        <figure class="figure movie" *ngFor="let movie of movies">
+            <a>
+                <img *ngIf="movie.poster_path" [src]='"https://image.tmdb.org/t/p/w185/" + movie.poster_path'
+                    alt="poster movie">
+                <img *ngIf="!movie.poster_path" src='./assets/images/facebook_graph.jpg' alt="poster movie">
+            </a>
+            <figcaption class="figure-caption movie__title">{{movie.title}}</figcaption>
+            <figcaption class="figure-caption movie__date">{{movie.release_date}}</figcaption>
+        </figure>
+    </div>
+</div>

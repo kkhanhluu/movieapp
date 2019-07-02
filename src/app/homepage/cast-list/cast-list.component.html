@@ -1,0 +1,9 @@
+<div *ngIf="castList; let castList; else loading" class="novie__cast">
+    <div class="cast" *ngFor="let cast of castList">
+        <a href="">
+            <div class="icon__container" [ngStyle]="{'background-image': 'url(' + IMAGE_URL + cast.profile_path + ')'}"></div>
+        </a>
+        <p>{{cast.name}}</p>
+    </div>
+</div>
+<ng-template #loading>Loading data...</ng-template>

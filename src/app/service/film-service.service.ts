@@ -3,6 +3,7 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { DiscoverResult } from '../model/discoverResult';
+import { Movie } from '../model/movie';
 
 @Injectable({
   providedIn: 'root'
@@ -10,10 +11,7 @@ import { DiscoverResult } from '../model/discoverResult';
 export class FilmServiceService {
   private API_KEY = 'f3e9f7d1677c7aa63c9ab526381eeceb';
   private URL_DISCOVER = 'https://api.themoviedb.org/3/discover/movie';
-  private filmListUrl = 'https://api.themoviedb.org/3/discover/movie?api_key=';
-  private filmListUrlSuffix =
-    '&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&primary_release_date.gte=';
-  private imageUrl = 'https://image.tmdb.org/t/p/w300';
+  private URL_MOVIE = 'https://api.themoviedb.org/3/movie';
 
   constructor(private http: HttpClient) {}
 
@@ -36,6 +34,16 @@ export class FilmServiceService {
     `
     );
   }
+
+  getMovieById(id: number): Observable<Movie> {
+    return this.sendRequest<Movie>(
+      'GET',
+      `${this.URL_MOVIE}/${id}?api_key=${
+        this.API_KEY
+      }&language=en-US&append_to_response=credits`
+    );
+  }
+
   private sendRequest<T>(verb: string, url: string): Observable<T> {
     let headers = new HttpHeaders();
     headers.set('Application-Names', ['Movie-app']);

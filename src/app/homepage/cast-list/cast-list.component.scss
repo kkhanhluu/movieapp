@@ -1,0 +1,15 @@
+.movie__cast {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-top: 3rem;
+  .cast {
+    a {
+      .icon__container {
+        width: 6rem;
+        height: 6rem;
+        border-radius: 50%;
+      }
+    }
+  }
+}

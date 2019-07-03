@@ -1,6 +1,5 @@
 .outer-container {
-  height: 100vh;
-  background-attachment: fixed;
+  height: 130vh;
   margin: 0;
   background-size: cover;
   background-repeat: no-repeat;
@@ -12,7 +11,7 @@
   background: #141411;
   margin: 20vh auto;
   display: flex;
-  max-height: 75vh;
+  max-height: 100vh;
   overflow: hidden;
   .data-container {
     padding: 2.5rem;

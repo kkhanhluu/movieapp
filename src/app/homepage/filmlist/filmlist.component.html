@@ -3,7 +3,7 @@
     <div class="movie__list" *ngIf="movies && movies.length > 0; else noData">
         <figure class="figure movie" *ngFor="let movie of movies">
             <div class="movie__poster-container">
-                <a [routerLink]='"/movie/" + movie.id'>
+                <a [routerLink]='"/movie/" + movie.id + "/cast"'>
                     <img *ngIf="movie.poster_path" [src]='"https://image.tmdb.org/t/p/w185/" + movie.poster_path'
                         alt="poster movie">
                     <img *ngIf="!movie.poster_path" src='./assets/images/facebook_graph.jpg' alt="poster movie">

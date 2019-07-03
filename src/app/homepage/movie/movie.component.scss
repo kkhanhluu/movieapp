@@ -9,7 +9,7 @@
 .card-container {
   font-family: 'Lato', sans-serif;
   border-radius: 3px;
-  background: rgba(0, 0, 0, 0.85);
+  background: #141411;
   margin: 20vh auto;
   display: flex;
   max-height: 75vh;
@@ -46,6 +46,7 @@
           display: block;
           font-size: 2.5rem;
           color: #00fc87;
+          margin: 1rem 0; 
         }
       }
     }

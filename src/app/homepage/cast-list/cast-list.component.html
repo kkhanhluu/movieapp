@@ -1,9 +1,15 @@
-<div *ngIf="castList; let castList; else loading" class="novie__cast">
-    <div class="cast" *ngFor="let cast of castList">
+<div *ngIf="castList; let castList; else loading" class="movie__cast">
+    <div class="cast" *ngFor="let cast of castList; let i = index">
         <a href="">
-            <div class="icon__container" [ngStyle]="{'background-image': 'url(' + IMAGE_URL + cast.profile_path + ')'}"></div>
+            <div *ngIf="cast.profile_path" class="icon__container"
+                [ngStyle]="{'background-image': 'url(' + IMAGE_URL + cast.profile_path + ')'}"> </div>
+            <div *ngIf="!cast.profile_path" class="icon__container"
+                [ngStyle]="{'background-image': 'url(https://bootdey.com/img/Content/avatar/avatar' + ((i % 8) + 1) + '.png)'}">
+            </div>
+            <h3>{{cast.name}}</h3>
+            <p>{{cast.character}}</p>
         </a>
-        <p>{{cast.name}}</p>
+
     </div>
 </div>
 <ng-template #loading>Loading data...</ng-template>

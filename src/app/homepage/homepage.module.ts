@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 import { MovieComponent } from './movie/movie.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { CastListComponent } from './cast-list/cast-list.component';
+import { StarComponent } from './star/star.component';
 
 let routing = RouterModule.forChild([
   { path: 'movies', component: HomepageComponent },
@@ -15,7 +16,8 @@ let routing = RouterModule.forChild([
     component: MovieComponent,
     children: [{ path: 'cast', component: CastListComponent }]
   },
-  { path: '', redirectTo: '/movies', pathMatch: 'full' }
+  { path: '', redirectTo: '/movies', pathMatch: 'full' },
+  { path: 'star/:id', component: StarComponent }
 ]);
 
 @NgModule({
@@ -24,7 +26,8 @@ let routing = RouterModule.forChild([
     FilmlistComponent,
     MovieComponent,
     HomepageComponent,
-    CastListComponent
+    CastListComponent,
+    StarComponent
   ],
   imports: [CommonModule, RouterModule, routing],
   exports: [NavbarComponent, FilmlistComponent, MovieComponent],

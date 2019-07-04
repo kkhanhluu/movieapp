@@ -1,6 +1,6 @@
 <div *ngIf="castList; let castList; else loading" class="movie__cast">
     <div class="cast" *ngFor="let cast of castList; let i = index">
-        <a href="">
+        <a [routerLink]="'/star/' + cast.id">
             <div *ngIf="cast.profile_path" class="icon__container"
                 [ngStyle]="{'background-image': 'url(' + IMAGE_URL + cast.profile_path + ')'}"> </div>
             <div *ngIf="!cast.profile_path" class="icon__container"

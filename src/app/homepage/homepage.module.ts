@@ -8,6 +8,7 @@ import { MovieComponent } from './movie/movie.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { CastListComponent } from './cast-list/cast-list.component';
 import { StarComponent } from './star/star.component';
+import { TrailerComponent } from './trailer/trailer.component';
 
 let routing = RouterModule.forChild([
   { path: 'movies', component: HomepageComponent },
@@ -27,7 +28,8 @@ let routing = RouterModule.forChild([
     MovieComponent,
     HomepageComponent,
     CastListComponent,
-    StarComponent
+    StarComponent,
+    TrailerComponent
   ],
   imports: [CommonModule, RouterModule, routing],
   exports: [NavbarComponent, FilmlistComponent, MovieComponent],

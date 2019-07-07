@@ -15,7 +15,10 @@ let routing = RouterModule.forChild([
   {
     path: 'movie/:id',
     component: MovieComponent,
-    children: [{ path: 'cast', component: CastListComponent }]
+    children: [
+      { path: 'cast', component: CastListComponent },
+      { path: 'trailers', component: TrailerComponent }
+    ]
   },
   { path: '', redirectTo: '/movies', pathMatch: 'full' },
   { path: 'star/:id', component: StarComponent }

@@ -11,7 +11,6 @@ export class CastListComponent implements OnInit {
   castList: Cast[] = [] as Cast[];
   private IMAGE_URL = 'https://image.tmdb.org/t/p/w500';
 
-  constructor(private router: Router, private route: ActivatedRoute) {}
+  constructor() {}
   ngOnInit() {}
-  
 }

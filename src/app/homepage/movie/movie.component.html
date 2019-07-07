@@ -54,13 +54,13 @@
     </div>
     <div class="under-container">
         <ul class="nav justify-content-center">
-            <li class="nav-item active">
+            <li class="nav-item" [class.active]="activeTab == tabs.CAST">
                 <a class="nav-link" [routerLink]="'/movie/' + movie.id + '/cast'">Cast</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" [class.active]="activeTab == tabs.TRAILERS">
                 <a class="nav-link" [routerLink]="'/movie/' + movie.id + '/trailers'">Trailers</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" [class.active]="activeTab == tabs.SIMILAR_MOVIES">
                 <a class="nav-link" [routerLink]="'/movie/' + movie.id + '/similarMovies'">Similar movies</a>
             </li>
         </ul>

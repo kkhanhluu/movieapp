@@ -1,4 +1,4 @@
-<div class="movie__list" *ngIf="similarMovies && similarMovies.length > 0; else noData">
+<div class="movie__list" *ngIf="similarMovies && similarMovies.length > 0">
     <figure class="figure movie" *ngFor="let movie of similarMovies">
         <div class="movie__poster-container">
             <a [routerLink]='"/movie/" + movie.id + "/cast"'>

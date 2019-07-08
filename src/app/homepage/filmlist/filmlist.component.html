@@ -1,6 +1,6 @@
 <div class="container__custom">
     <h1>Top movie Now-playing</h1>
-    <div class="movie__list" *ngIf="movies && movies.length > 0; else noData">
+    <div class="movie__list" *ngIf="movies && movies.length > 0">
         <figure class="figure movie" *ngFor="let movie of movies">
             <div class="movie__poster-container">
                 <a [routerLink]='"/movie/" + movie.id + "/cast"'>

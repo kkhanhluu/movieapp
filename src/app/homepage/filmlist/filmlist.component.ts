@@ -9,7 +9,7 @@ import { Movie } from 'src/app/model/movie';
 })
 export class FilmlistComponent {
 
-  private movies: Movie[] = [];
+  movies: Movie[] = [];
   
   constructor(private filmService: FilmServiceService) {
     this.filmService.discoverMovies().subscribe(result => this.movies = result.results); 

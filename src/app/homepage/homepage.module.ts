@@ -9,6 +9,7 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { CastListComponent } from './cast-list/cast-list.component';
 import { StarComponent } from './star/star.component';
 import { TrailerComponent } from './trailer/trailer.component';
+import { SimiliarMoviesComponent } from './similiar-movies/similiar-movies.component';
 
 let routing = RouterModule.forChild([
   { path: 'movies', component: HomepageComponent },
@@ -17,7 +18,8 @@ let routing = RouterModule.forChild([
     component: MovieComponent,
     children: [
       { path: 'cast', component: CastListComponent },
-      { path: 'trailers', component: TrailerComponent }
+      { path: 'trailers', component: TrailerComponent },
+      { path: 'similarMovies', component: SimiliarMoviesComponent }
     ]
   },
   { path: '', redirectTo: '/movies', pathMatch: 'full' },
@@ -32,7 +34,8 @@ let routing = RouterModule.forChild([
     HomepageComponent,
     CastListComponent,
     StarComponent,
-    TrailerComponent
+    TrailerComponent,
+    SimiliarMoviesComponent
   ],
   imports: [CommonModule, RouterModule, routing],
   exports: [NavbarComponent, FilmlistComponent, MovieComponent],

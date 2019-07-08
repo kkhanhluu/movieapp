@@ -1,0 +1,91 @@
+h1 {
+  padding-left: 7vw;
+}
+.movie__list {
+  padding: 2rem;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+
+  .movie {
+    margin: 1rem 0.625rem;
+    width: calc(20% - 10px);
+    min-width: calc(20% - 10px);
+    text-align: center;
+    position: relative;
+
+    .movie__poster-container {
+      background: black;
+      overflow: hidden;
+      padding: 3rem 0;
+
+      a {
+        text-decoration: none;
+        color: white;
+        img {
+          max-height: 278px;
+          min-height: 278px;
+          transition: all 0.4s ease;
+        }
+      }
+    }
+
+    .movie__poster-container:hover {
+      cursor: pointer;
+      .movie__overlay {
+        opacity: 1;
+      }
+      a img {
+        transform: scale(1.2);
+      }
+    }
+
+    .movie__overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 75%;
+      max-height: 75%;
+      font-size: 1.6rem;
+      background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.75) 0%,
+        rgba(0, 0, 0, 0) 100%
+      );
+      padding: 2rem;
+      opacity: 0;
+      text-align: left;
+      overflow: hidden;
+      pointer-events: all;
+      transition: opacity 0.125s ease;
+
+      .movie__overlay--title {
+        font-size: 2rem;
+        font-weight: 200;
+        transition: opacity 0.25s ease;
+      }
+
+      .movie__overlay--vote {
+        transition: opacity 0.25s ease 0.125s;
+      }
+
+      .movie__overlay--overview {
+        font-weight: 300;
+        line-height: 1.6;
+        text-overflow: ellipsis;
+      }
+    }
+
+    .movie__title {
+      margin: 2rem 0 0 0;
+      color: #ff424f;
+      font-size: 1.9rem;
+    }
+    .movie__date {
+      margin: 0;
+      color: #fff;
+      font-size: 1.6rem;
+    }
+  }
+}

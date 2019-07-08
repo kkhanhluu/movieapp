@@ -1,4 +1,5 @@
 import { Credits } from './cast';
+import { Videos } from './video';
 
 export interface Movie {
   adult: boolean;
@@ -22,4 +23,5 @@ export interface Movie {
   vote_average: number;
   vote_count: number;
   credits: Credits;
+  videos: Videos;
 }

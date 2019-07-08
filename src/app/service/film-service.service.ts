@@ -4,6 +4,8 @@ import { catchError, map } from 'rxjs/operators';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { DiscoverResult } from '../model/discoverResult';
 import { Movie } from '../model/movie';
+import { Cast } from '../model/cast';
+import { Actor } from '../model/actor';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +14,7 @@ export class FilmServiceService {
   private API_KEY = 'f3e9f7d1677c7aa63c9ab526381eeceb';
   private URL_DISCOVER = 'https://api.themoviedb.org/3/discover/movie';
   private URL_MOVIE = 'https://api.themoviedb.org/3/movie';
+  private URL_IMAGE = 'https://image.tmdb.org/t/p/w500';
 
   constructor(private http: HttpClient) {}
 
@@ -40,8 +43,21 @@ export class FilmServiceService {
       'GET',
       `${this.URL_MOVIE}/${id}?api_key=${
         this.API_KEY
-      }&language=en-US&append_to_response=credits`
+      }&language=en-US&append_to_response=credits,videos`
     );
+  }
+
+  getActorById(id: number): Observable<Actor> {
+    return this.sendRequest(
+      'GET',
+      `https://api.themoviedb.org/3/person/${id}?api_key=${
+        this.API_KEY
+      }&language=en-US`
+    );
+  }
+
+  getImageUrl(url: string): string {
+    return `${this.URL_IMAGE}${url}`;
   }
 
   private sendRequest<T>(verb: string, url: string): Observable<T> {
@@ -57,5 +73,14 @@ export class FilmServiceService {
           throwError(`Network Error: ${error.statusText} (${error.status})`)
         )
       );
+  }
+
+  getSimilarMovie(id: number): Observable<DiscoverResult> {
+    return this.sendRequest(
+      'GET',
+      `${this.URL_MOVIE}/${id}/recommendations?api_key=${
+        this.API_KEY
+      }&language=en-US&page=1`
+    );
   }
 }

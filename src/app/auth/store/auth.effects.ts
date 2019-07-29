@@ -3,7 +3,7 @@ import { Actions, Effect, ofType } from '@ngrx/effects';
 import * as AuthActions from './auth.actions';
 import { mergeMap, map, catchError, tap } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
-import { SIGNUP_URL } from 'src/app/shared/constants';
+import { SIGNUP_URL, LOGIN_URL } from 'src/app/shared/constants';
 import { User } from '../user.model';
 import { of } from 'rxjs';
 import { Router } from '@angular/router';
@@ -64,12 +64,30 @@ export class AuthEffects {
       return this.http
         .post(SIGNUP_URL, {
           email: signupAciton.payload.email,
-          password: signupAciton.payload.password
+          password: signupAciton.payload.password,
+          returnSecureToken: true
         })
         .pipe(
           map((authResponse: AuthResponse) =>
             handleAuthentication(authResponse)
           ),
+          catchError(errorRes => handleError(errorRes))
+        );
+    })
+  );
+
+  @Effect()
+  authLogin = this.actions$.pipe(
+    ofType(AuthActions.LOGIN_START),
+    mergeMap((loginAction: AuthActions.LoginStart) => {
+      return this.http
+        .post(LOGIN_URL, {
+          email: loginAction.payload.email,
+          password: loginAction.payload.password,
+          returnSecureToken: true
+        })
+        .pipe(
+          map((authRes: AuthResponse) => handleAuthentication(authRes)),
           catchError(errorRes => handleError(errorRes))
         );
     })
@@ -82,6 +100,7 @@ export class AuthEffects {
       this.router.navigate(['/']);
     })
   );
+
   constructor(
     private actions$: Actions,
     private http: HttpClient,

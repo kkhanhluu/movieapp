@@ -1,0 +1,51 @@
+a {
+  color: white;
+}
+
+.navbar {
+  background: linear-gradient(to bottom, black 0%, rgba(0, 0, 0, 0) 100%);
+  font-size: 1.6rem;
+  padding: 3rem;
+
+  .navbar-brand {
+    margin-left: 2rem;
+    img {
+      width: 20rem;
+      height: 6rem;
+    }
+  }
+  #navbarSupportedContent {
+    ul {
+      li {
+        margin-right: 0rem;
+        padding: 0rem 1rem;
+      }
+      li:hover {
+        background: #e50914;
+        border-radius: 5px;
+      }
+    }
+    form {
+      margin-left: 3rem;
+      width: 30%;
+      input {
+        border-radius: 20px;
+        width: 80%;
+        background: transparent;
+        border: solid 2px #565e64;
+        font-size: 1.6rem;
+        padding: 1.5rem 2rem;
+        transition: all 0.2s;
+        color: white;
+      }
+
+      input:focus {
+        width: 100%;
+        border: solid 2px #e50914;
+      }
+      ::-webkit-input-placeholder {
+        font-size: 1.6rem;
+      }
+    }
+  }
+}

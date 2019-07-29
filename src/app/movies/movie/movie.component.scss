@@ -1,0 +1,167 @@
+.outer-container {
+  height: 130vh;
+  margin: 0;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: white;
+}
+.card-container {
+  font-family: 'Lato', sans-serif;
+  border-radius: 3px;
+  background: #141411;
+  margin: 20vh auto;
+  display: flex;
+  max-height: 100vh;
+  overflow: hidden;
+  .data-container {
+    padding: 2.5rem;
+    .movie__title {
+      font-size: 4rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    .movie__overview {
+      font-size: 1.6rem;
+      line-height: 2.4rem;
+      font-weight: 300;
+      color: #fafafa;
+    }
+    .additional__information {
+      margin-top: 2rem;
+      font-size: 2.2rem;
+      font-family: 'Oswald', sans-serif;
+      .movie__genre {
+        color: #00fc87;
+      }
+      .movie__producers {
+        font-weight: 100;
+      }
+      .release-details {
+        padding: 0 1.5rem;
+        color: #fafafa;
+        font-size: 1.6rem;
+        line-height: 2.4rem;
+        span {
+          display: block;
+          font-size: 2.5rem;
+          color: #00fc87;
+          margin: 1rem 0;
+        }
+      }
+    }
+  }
+  .poster-container {
+    .poster {
+      width: 100%;
+      border-radius: 0 0 3px 3px;
+    }
+  }
+}
+
+.under-container {
+  background: #010101;
+  .nav {
+    .nav-item {
+      width: 20%;
+      height: 4.8rem;
+      padding: 1rem 2.4rem;
+      cursor: pointer;
+      text-transform: uppercase;
+      font-size: 1.4rem;
+      text-align: center;
+      a {
+        color: #fafafa;
+      }
+    }
+    .active {
+      border-bottom: 5px solid red;
+    }
+  }
+}
+.nopadding {
+  padding: 0;
+}
+.lds-roller {
+  display: inline-block;
+  position: relative;
+  width: 64px;
+  height: 64px;
+}
+.lds-roller div {
+  animation: lds-roller 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  transform-origin: 32px 32px;
+}
+.lds-roller div:after {
+  content: ' ';
+  display: block;
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #fff;
+  margin: -3px 0 0 -3px;
+}
+.lds-roller div:nth-child(1) {
+  animation-delay: -0.036s;
+}
+.lds-roller div:nth-child(1):after {
+  top: 50px;
+  left: 50px;
+}
+.lds-roller div:nth-child(2) {
+  animation-delay: -0.072s;
+}
+.lds-roller div:nth-child(2):after {
+  top: 54px;
+  left: 45px;
+}
+.lds-roller div:nth-child(3) {
+  animation-delay: -0.108s;
+}
+.lds-roller div:nth-child(3):after {
+  top: 57px;
+  left: 39px;
+}
+.lds-roller div:nth-child(4) {
+  animation-delay: -0.144s;
+}
+.lds-roller div:nth-child(4):after {
+  top: 58px;
+  left: 32px;
+}
+.lds-roller div:nth-child(5) {
+  animation-delay: -0.18s;
+}
+.lds-roller div:nth-child(5):after {
+  top: 57px;
+  left: 25px;
+}
+.lds-roller div:nth-child(6) {
+  animation-delay: -0.216s;
+}
+.lds-roller div:nth-child(6):after {
+  top: 54px;
+  left: 19px;
+}
+.lds-roller div:nth-child(7) {
+  animation-delay: -0.252s;
+}
+.lds-roller div:nth-child(7):after {
+  top: 50px;
+  left: 14px;
+}
+.lds-roller div:nth-child(8) {
+  animation-delay: -0.288s;
+}
+.lds-roller div:nth-child(8):after {
+  top: 45px;
+  left: 10px;
+}
+@keyframes lds-roller {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

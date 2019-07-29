@@ -7,6 +7,7 @@ const routes: Routes = [
     loadChildren: './movies/movies.module#MoviesModule'
   },
   { path: 'star', loadChildren: './star/star.module#StarModule' },
+  { path: 'auth', loadChildren: './auth/auth.module#AuthModule' },
   { path: '', redirectTo: 'movies', pathMatch: 'full' }
 ];
 

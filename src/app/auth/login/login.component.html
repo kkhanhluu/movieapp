@@ -1,0 +1,23 @@
+<div class="login-container">
+  <div class="login">
+    <div class="banner"></div>
+    <form #loginForm="ngForm">
+      <div class="wrapper">
+        <div class="row">
+          <div class="label">Username</div>
+          <input type="text" ngModel name="username">
+        </div>
+        <div class="row">
+          <div class="label" ngModel name="password">Password</div>
+          <input type="password">
+        </div>
+        <div class="row">
+          <button>Login</button>
+        </div>
+      </div>
+      <div class="signup">
+        Don't have an account? <a routerLink="/auth/signup">Signup</a>
+      </div>
+    </form>
+  </div>
+</div>

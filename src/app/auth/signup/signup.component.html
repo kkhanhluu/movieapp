@@ -1,0 +1,23 @@
+<div class="signup-container">
+  <div class="signup">
+    <div class="banner"></div>
+    <form #signupForm="ngForm" (ngSubmit)="onSubmit()">
+      <div class="wrapper">
+        <div class="row">
+          <div class="label">Email</div>
+          <input type="email" ngModel name="email">
+        </div>
+        <div class="row">
+          <div class="label">Password</div>
+          <input type="password" ngModel name="password">
+        </div>
+        <div class="row">
+          <button type="submit">Signup</button>
+        </div>
+      </div>
+      <div class="login">
+        Have already had an account? <a routerLink="/auth/login">Login</a>
+      </div>
+    </form>
+  </div>
+</div>

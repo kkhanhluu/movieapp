@@ -14,34 +14,35 @@
 
     .movie {
       margin: 1rem 0.625rem;
-      width: calc(20% - 10px);
-      min-width: calc(20% - 10px);
       text-align: center;
       position: relative;
+      overflow: hidden;
 
       .movie__poster-container {
         background: black;
-        overflow: hidden;
         padding: 3rem 0;
+        border-radius: 1rem;
+        overflow: hidden;
+        height: 287px;
+        background-size: 100%;
+        background-repeat: no-repeat;
+        background-position: center;
+        transition: all 0.8s ease;
 
         a {
           text-decoration: none;
           color: white;
-          img {
-            max-height: 278px;
-            min-height: 278px;
-            transition: all 0.4s ease;
-          }
+          overflow: hidden;
         }
       }
 
       .movie__poster-container:hover {
         cursor: pointer;
+        background-size: 150%;
+        transition: all 0.4s ease;
+
         .movie__overlay {
           opacity: 1;
-        }
-        a img {
-          transform: scale(1.2);
         }
       }
 
@@ -64,6 +65,7 @@
         overflow: hidden;
         pointer-events: all;
         transition: opacity 0.125s ease;
+        border-radius: 10px;
 
         .movie__overlay--title {
           font-size: 2rem;

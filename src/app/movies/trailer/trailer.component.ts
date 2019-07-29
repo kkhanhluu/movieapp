@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Video } from 'src/app/shared/model/video';
 import { DomSanitizer } from '@angular/platform-browser';
+import { BASE_YOUTUBE_URL } from 'src/app/shared/constants';
 
 @Component({
   selector: 'app-trailer',
@@ -9,7 +10,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class TrailerComponent implements OnInit {
   videos: Video[] = [];
-  private BASE_URL = 'https://www.youtube.com/embed/';
+  private BASE_URL = BASE_YOUTUBE_URL;
   constructor(private sanitizer: DomSanitizer) {}
 
   ngOnInit() {}

@@ -15,8 +15,8 @@ export class SimiliarMoviesComponent implements OnInit {
     private service: FilmServiceService
   ) {
     this.route.parent.params.subscribe(params => {
-      if (params['id'] != null) {
-        let id = Number(params['id']);
+      if (params.id != null) {
+        const id = +params.id;
         this.service.getSimilarMovie(id).subscribe(movies => {
           this.similarMovies = movies.results;
           console.log(movies.results);

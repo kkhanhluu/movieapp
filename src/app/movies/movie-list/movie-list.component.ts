@@ -8,11 +8,11 @@ import { Movie } from 'src/app/shared/model/movie';
   styleUrls: ['./movie-list.component.scss']
 })
 export class MovieListComponent {
-
   movies: Movie[] = [];
 
   constructor(private filmService: FilmServiceService) {
-    this.filmService.discoverMovies().subscribe(result => this.movies = result.results);
+    this.filmService
+      .discoverMovies()
+      .subscribe(result => (this.movies = result.results));
   }
-
 }

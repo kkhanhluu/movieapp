@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { CastListComponent } from '../cast-list/cast-list.component';
 import { TrailerComponent } from '../trailer/trailer.component';
 import { SimiliarMoviesComponent } from '../similiar-movies/similiar-movies.component';
+import { IMAGE_URL } from 'src/app/shared/constants';
 
 @Component({
   selector: 'app-movie',
@@ -12,11 +13,12 @@ import { SimiliarMoviesComponent } from '../similiar-movies/similiar-movies.comp
   styleUrls: ['./movie.component.scss']
 })
 export class MovieComponent implements OnInit {
-  movie: Movie;
+  private IMAGE_URL = IMAGE_URL;
   private id: number;
+  movie: Movie;
   posterPath: string;
   backdropPath: string;
-  private IMAGE_URL = 'https://image.tmdb.org/t/p/w500';
+  // active tab
   activeTab: string;
   tabs = {
     CAST: 'cast',
@@ -31,7 +33,7 @@ export class MovieComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      let id = params['id'];
+      const id = params.id;
       if (id != null) {
         this.id = id;
         this.service.getMovieById(this.id).subscribe((movie: Movie) => {

@@ -18,12 +18,18 @@
       <li class="nav-item">
         <a class="nav-link" href="#">Trend</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="!isLoggedin">
         <a class="nav-link" href="/auth">Authenticate</a>
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search for a title..." aria-label="Search">
     </form>
+    <div class="user-profile" *ngIf="isLoggedin">
+      <div class="name">Jack Oliver</div>
+      <div class="profile-image">
+        <img src="https://www.bootdey.com/img/Content/avatar/avatar8.png" alt="">
+      </div>
+    </div>
   </div>
 </nav>

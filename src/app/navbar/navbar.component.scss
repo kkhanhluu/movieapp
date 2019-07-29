@@ -47,5 +47,23 @@ a {
         font-size: 1.6rem;
       }
     }
+    .user-profile {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      font-weight: 300;
+      
+      .name {
+        padding: 1rem 2rem;
+        color: white;
+      }
+      .profile-image {
+        img {
+          width: 6rem;
+          height: 6rem;
+          border-radius: 50%;
+        }
+      }
+    }
   }
 }

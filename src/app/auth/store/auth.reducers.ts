@@ -7,22 +7,19 @@ export interface State {
   error: string;
 }
 
-const initialState: State = {
+const INITIAL_STATE: State = {
   user: null,
   isLoading: false,
   error: null
 };
 
-export const authReducer = (
-  state = initialState,
-  action: AuthActions.AuthActions
-) => {
+export const authReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case AuthActions.LOGIN_START:
       return { ...state, isLoading: true };
     case AuthActions.AUTHENTICATE_SUCCESS:
       const user = new User(
-        action.payload.email,
+        action.payload.emal,
         action.payload.id,
         action.payload.token,
         action.payload.expirationDate

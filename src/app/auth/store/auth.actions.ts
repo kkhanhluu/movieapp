@@ -8,18 +8,18 @@ export const LOGOUT = '[Auth] Logout';
 
 export class LoginStart implements Action {
   readonly type: string = LOGIN_START;
-  constructor(public payload: { email: string; password: string }) {}
+  constructor(readonly payload: { email: string; password: string }) {}
 }
 
 export class SignupStart implements Action {
   readonly type: string = SIGNUP_START;
-  constructor(public payload: { email: string; password: string }) {}
+  constructor(readonly payload: { email: string; password: string }) {}
 }
 
 export class AuthenticateSuccess implements Action {
   readonly type: string = AUTHENTICATE_SUCCESS;
   constructor(
-    public payload: {
+    readonly payload: {
       email: string;
       id: string;
       token: string;
@@ -28,4 +28,13 @@ export class AuthenticateSuccess implements Action {
   ) {}
 }
 
-export type AuthActions = AuthenticateSuccess | LoginStart | SignupStart;
+export class AuthenticateFail implements Action {
+  readonly type: string = AUTHENTICATE_FAILED;
+  constructor(public payload: string) {}
+}
+
+export type AuthActions =
+  | AuthenticateSuccess
+  | LoginStart
+  | SignupStart
+  | AuthenticateFail;

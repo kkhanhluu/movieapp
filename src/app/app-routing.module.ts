@@ -6,6 +6,10 @@ const routes: Routes = [
   //   path: '',
   //   loadChildren: './homepage/homepage.module#HomepageModule'
   // }
+  {
+    path: '',
+    loadChildren: './movies/movies.module#MoviesModule'
+  }
 ];
 
 @NgModule({

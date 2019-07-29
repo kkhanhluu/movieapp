@@ -6,12 +6,18 @@ import { SimiliarMoviesComponent } from './similiar-movies/similiar-movies.compo
 import { TrailerComponent } from './trailer/trailer.component';
 import { CastListComponent } from './cast-list/cast-list.component';
 import { RouterModule } from '@angular/router';
+import { MoviesComponent } from './movies.component';
+import { MoviesRoutingModule } from './movies-routing.module';
 
 @NgModule({
-  declarations: [MovieListComponent, MovieComponent, SimiliarMoviesComponent, TrailerComponent, CastListComponent],
-  imports: [
-    CommonModule,
-    RouterModule
-  ]
+  declarations: [
+    MovieListComponent,
+    MovieComponent,
+    SimiliarMoviesComponent,
+    TrailerComponent,
+    CastListComponent,
+    MoviesComponent
+  ],
+  imports: [CommonModule, RouterModule, MoviesRoutingModule],
 })
-export class MoviesModule { }
+export class MoviesModule {}

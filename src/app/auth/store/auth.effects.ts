@@ -8,6 +8,7 @@ import * as AuthActions from './auth.actions';
 import { SIGNUP_URL, LOGIN_URL } from 'src/app/shared/constants';
 import { User } from '../user.model';
 import { of } from 'rxjs';
+import { AuthServiceService } from '../auth-service.service';
 
 export interface AuthResponse {
   idToken: string;
@@ -27,7 +28,6 @@ const handleAuthentication = (resData: AuthResponse) => {
     exiprationDate
   );
   localStorage.setItem('user', JSON.stringify(user));
-  console.log('done');
   // return new action
   return new AuthActions.AuthenticateSuccess({
     email: user.email,
@@ -88,6 +88,9 @@ export class AuthEffects {
           returnSecureToken: true
         })
         .pipe(
+          tap((authRes: AuthResponse) => {
+            this.service.setLogoutTimer(+authRes.expiresIn * 1000);
+          }),
           map((authRes: AuthResponse) => handleAuthentication(authRes)),
           catchError(errorRes => handleError(errorRes))
         );
@@ -100,6 +103,11 @@ export class AuthEffects {
     map((autoLoginAction: AuthActions.AutoLogin) => {
       const userData = JSON.parse(localStorage.getItem('user'));
       if (userData) {
+        // auto logout
+        const expirationDuration =
+          new Date().getTime() - new Date(userData.expirationDate).getTime();
+        this.service.setLogoutTimer(expirationDuration);
+
         return new AuthActions.AuthenticateSuccess({
           email: userData.email,
           id: userData.id,
@@ -120,9 +128,18 @@ export class AuthEffects {
     })
   );
 
+  @Effect({ dispatch: false })
+  authLogout = this.actions$.pipe(
+    ofType(AuthActions.LOGOUT),
+    tap(() => {
+      localStorage.removeItem('user');
+    })
+  );
+
   constructor(
     private actions$: Actions,
     private http: HttpClient,
-    private router: Router
+    private router: Router,
+    private service: AuthServiceService
   ) {}
 }

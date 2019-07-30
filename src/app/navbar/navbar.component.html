@@ -25,7 +25,7 @@
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search for a title..." aria-label="Search">
     </form>
-    <div class="user-profile" *ngIf="isLoggedin">
+    <div class="user-profile" *ngIf="isLoggedin" (click)="onLogout()">
       <a class="name">Jack Oliver/Logout</a>
       <div class="profile-image">
         <img src="https://www.bootdey.com/img/Content/avatar/avatar8.png" alt="">

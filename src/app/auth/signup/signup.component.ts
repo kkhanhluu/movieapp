@@ -23,6 +23,5 @@ export class SignupComponent implements OnInit {
         password: this.form.value.password
       })
     );
-    console.log('hello');
   }
 }

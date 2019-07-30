@@ -19,7 +19,6 @@ export class SimiliarMoviesComponent implements OnInit {
         const id = +params.id;
         this.service.getSimilarMovie(id).subscribe(movies => {
           this.similarMovies = movies.results;
-          console.log(movies.results);
         });
       }
     });

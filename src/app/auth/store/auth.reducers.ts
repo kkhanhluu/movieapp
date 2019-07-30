@@ -17,6 +17,8 @@ export const authReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case AuthActions.LOGIN_START:
       return { ...state, isLoading: true };
+    case AuthActions.SIGNUP_START:
+      return { ...state, isLoading: true };
     case AuthActions.AUTHENTICATE_SUCCESS:
       const user = new User(
         action.payload.emal,
@@ -25,6 +27,12 @@ export const authReducer = (state = INITIAL_STATE, action) => {
         action.payload.expirationDate
       );
       return { ...state, user, isLoading: false, error: null };
+    case AuthActions.AUTHENTICATE_FAILED:
+      return { ...state, error: null };
+    case AuthActions.AUTO_LOGIN:
+      return { ...state, isLoading: true, error: null };
+    case AuthActions.LOGOUT:
+      return { ...state, user: null, error: null };
     default:
       return state;
   }

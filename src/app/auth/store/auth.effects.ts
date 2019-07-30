@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
-import { Actions, Effect, ofType } from '@ngrx/effects';
-import * as AuthActions from './auth.actions';
-import { mergeMap, map, catchError, tap } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { mergeMap, map, catchError, tap } from 'rxjs/operators';
+import { Actions, Effect, ofType } from '@ngrx/effects';
+
+import * as AuthActions from './auth.actions';
 import { SIGNUP_URL, LOGIN_URL } from 'src/app/shared/constants';
 import { User } from '../user.model';
 import { of } from 'rxjs';
-import { Router } from '@angular/router';
 
 export interface AuthResponse {
   idToken: string;
@@ -18,7 +19,7 @@ export interface AuthResponse {
 
 const handleAuthentication = (resData: AuthResponse) => {
   // save user's data to local storage
-  const exiprationDate = new Date(new Date().getTime() + resData.expiresIn);
+  const exiprationDate = new Date(new Date().getTime() + +resData.expiresIn);
   const user = new User(
     resData.email,
     resData.localId,
@@ -90,6 +91,24 @@ export class AuthEffects {
           map((authRes: AuthResponse) => handleAuthentication(authRes)),
           catchError(errorRes => handleError(errorRes))
         );
+    })
+  );
+
+  @Effect()
+  authAutoLogin = this.actions$.pipe(
+    ofType(AuthActions.AUTO_LOGIN),
+    map((autoLoginAction: AuthActions.AutoLogin) => {
+      const userData = JSON.parse(localStorage.getItem('user'));
+      if (userData) {
+        return new AuthActions.AuthenticateSuccess({
+          email: userData.email,
+          id: userData.id,
+          token: userData.token,
+          expirationDate: userData.expirationDate
+        });
+      } else {
+        return { type: 'DUMMY' };
+      }
     })
   );
 

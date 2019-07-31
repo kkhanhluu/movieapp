@@ -1,3 +1,5 @@
+@import "~src/variables.scss";
+
 .container__custom {
   background-color: #221f1f;
   color: white;
@@ -14,7 +16,7 @@
 
     .movie {
       margin: 1rem 0.625rem;
-      text-align: center;
+      text-align: left;
       position: relative;
       overflow: hidden;
 
@@ -86,7 +88,7 @@
 
       .movie__title {
         margin: 2rem 0 0 0;
-        color: #ff424f;
+        color: $color-success;
         font-size: 1.9rem;
       }
       .movie__date {

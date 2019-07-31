@@ -1,3 +1,5 @@
+@import "~src/variables.scss";
+
 .movie__cast {
   display: flex;
   flex-direction: row;
@@ -17,7 +19,7 @@
         width: 6rem;
         height: 6rem;
         border-radius: 50%;
-        border: solid 1px #00fc87;
+        border: solid 1px $color-danger;
         object-fit: cover;
         background-size: cover;
         background-position: center;
@@ -25,7 +27,7 @@
         margin: 0 auto;
       }
       h3 {
-        color: #ff424f;
+        color: $color-success;
         margin: 1rem 0;
       }
       p {

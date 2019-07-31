@@ -4,13 +4,13 @@
   </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
+    <span class="navbar-toggler-icon" (click)="toggleNavbar()"></span>
   </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  <div class="collapse navbar-collapse" [class.show]="navbarOpened" id="navbarSupportedContent">
     <ul class="navbar-nav mr-5">
       <li class="nav-item active">
-        <a class="nav-link" href="#">New Release <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="#">New Release <span class="sr-only"></span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Recent</a>
@@ -25,11 +25,19 @@
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search for a title..." aria-label="Search">
     </form>
-    <div class="user-profile" *ngIf="isLoggedin" (click)="onLogout()">
-      <a class="name">Jack Oliver/Logout</a>
-      <div class="profile-image">
-        <img src="https://www.bootdey.com/img/Content/avatar/avatar8.png" alt="">
-      </div>
+  </div>
+  <div class="user-profile" *ngIf="isLoggedin" (click)="onLogout()">
+    <a class="name">Jack Oliver/Logout</a>
+    <div class="profile-image">
+      <img src="https://www.bootdey.com/img/Content/avatar/avatar8.png" alt="">
+    </div>
+  </div>
+  <div ngbDropdown class="user-actions d-inline-block">
+    <button class="nav-link user-button" ngbDropdownToggle id="navbarDropdown2" role="button"></button>
+    <div ngbDropdownMenu aria-labelledby="navbarDropdown2" class="dropdown-menu dropdown-menu-right">
+      <a class="dropdown-item" routerLink="/#">Action</a>
+      <a class="dropdown-item" routerLink="/#">Another action</a>
+      <a class="dropdown-item" routerLink="/#">Something else here</a>
     </div>
   </div>
 </nav>

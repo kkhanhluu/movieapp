@@ -13,7 +13,7 @@
         </a>
       </div>
       <figcaption class="figure-caption movie__title">{{movie.title}}</figcaption>
-      <figcaption class="figure-caption movie__date">{{movie.release_date}}</figcaption>
+      <figcaption class="figure-caption movie__date">{{movie.release_date.substring(0, movie.release_date.indexOf('-'))}}</figcaption>
     </figure>
   </div>
 </div>

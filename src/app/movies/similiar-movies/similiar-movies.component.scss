@@ -1,3 +1,5 @@
+@import "~src/variables.scss";
+
 h1 {
   padding-left: 7vw;
 }
@@ -79,7 +81,7 @@ h1 {
 
     .movie__title {
       margin: 2rem 0 0 0;
-      color: #ff424f;
+      color: $color-success;
       font-size: 1.9rem;
     }
     .movie__date {

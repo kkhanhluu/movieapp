@@ -20,6 +20,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   isLoggedin = false;
   user: User;
   emailVerfied = true;
+  navbarOpened = false;
 
   constructor(
     private store: Store<fromApp.AppState>,
@@ -55,6 +56,10 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   onLogout() {
     this.store.dispatch(new AuthActions.Logout());
+  }
+
+  toggleNavbar() {
+    this.navbarOpened = !this.navbarOpened;
   }
 
   ngOnDestroy() {

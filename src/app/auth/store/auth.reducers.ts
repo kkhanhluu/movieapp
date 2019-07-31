@@ -13,7 +13,7 @@ const INITIAL_STATE: State = {
   error: null
 };
 
-export const authReducer = (state = INITIAL_STATE, action) => {
+export function authReducer (state = INITIAL_STATE, action) {
   switch (action.type) {
     case AuthActions.LOGIN_START:
       return { ...state, isLoading: true };

@@ -11,7 +11,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class FilmServiceService {
-  private API_KEY = environment.apiKey;
+  private API_KEY = environment.TMDBApiKey;
   private URL_DISCOVER = 'https://api.themoviedb.org/3/discover/movie';
   private URL_MOVIE = 'https://api.themoviedb.org/3/movie';
   private URL_IMAGE = 'https://image.tmdb.org/t/p/w500';

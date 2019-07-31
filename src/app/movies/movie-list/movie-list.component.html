@@ -3,11 +3,8 @@
   <div class="movie__list" *ngIf="movies && movies.length > 0">
     <figure class="figure movie col-lg-2 col-md-3 col-sm-6 col-xs-6" *ngFor="let movie of movies">
       <div class="movie__poster-container"
-        [style.background-image]="'url(https://image.tmdb.org/t/p/original/' + movie.poster_path + ')'">
-        <a [routerLink]='"/movie/" + movie.id + "/cast"'>
-          <!-- <img *ngIf="movie.poster_path" [src]='"https://image.tmdb.org/t/p/w185/" + movie.poster_path'
-            alt="poster movie">
-          <img *ngIf="!movie.poster_path" src='./assets/images/facebook_graph.jpg' alt="poster movie"> -->
+        [style.background-image]="movie.poster_path ?  'url(https://image.tmdb.org/t/p/original/' + movie.poster_path + ')' : './assets/images/facebook_graph.jpg'">
+        <a [routerLink]='"movie/" + movie.id + "/cast"'>
           <div class="movie__overlay">
             <div class="movie__overlay--title">{{movie.title}}</div>
             <div class="movie__overlay--vote"> {{movie.vote_average}} / 10 </div>
@@ -17,6 +14,6 @@
       </div>
       <figcaption class="figure-caption movie__title">{{movie.title}}</figcaption>
       <figcaption class="figure-caption movie__date">{{movie.release_date}}</figcaption>
-    </figure>j
+    </figure>
   </div>
 </div>

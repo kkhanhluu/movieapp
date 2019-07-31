@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { MoviesComponent } from './movies.component';
 import { MovieComponent } from './movie/movie.component';
 import { CastListComponent } from './cast-list/cast-list.component';
-import { TrailerComponent } from './trailer/trailer.component';
+import { TrailersComponent } from './trailers/trailers.component';
 import { SimiliarMoviesComponent } from './similiar-movies/similiar-movies.component';
 
 const routes: Routes = [
@@ -13,7 +13,7 @@ const routes: Routes = [
     component: MovieComponent,
     children: [
       { path: 'cast', component: CastListComponent },
-      { path: 'trailers', component: TrailerComponent },
+      { path: 'trailers', component: TrailersComponent },
       { path: 'similarMovies', component: SimiliarMoviesComponent }
     ]
   }

@@ -1,4 +1,4 @@
-<div class="container__custom">
+<div class="container__custom" *ngIf="!loading">
   <h1>Top movie Now-playing</h1>
   <div class="movie__list" *ngIf="movies && movies.length > 0">
     <figure class="figure movie col-lg-2 col-md-3 col-sm-6 col-xs-6" *ngFor="let movie of movies">
@@ -13,7 +13,11 @@
         </a>
       </div>
       <figcaption class="figure-caption movie__title">{{movie.title}}</figcaption>
-      <figcaption class="figure-caption movie__date">{{movie.release_date.substring(0, movie.release_date.indexOf('-'))}}</figcaption>
+      <figcaption class="figure-caption movie__date">
+        {{movie.release_date.substring(0, movie.release_date.indexOf('-'))}}</figcaption>
     </figure>
   </div>
+  <ngb-pagination class="pagination-container" [collectionSize]="110" [(page)]="page" [maxSize]="5 " [rotate]="true"
+    [ellipses]="false" [boundaryLinks]="true" (pageChange)="onPageChange($event)" [size]="'lg'"></ngb-pagination>
 </div>
+<app-spinner *ngIf="loading"></app-spinner>

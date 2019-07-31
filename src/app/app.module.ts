@@ -13,9 +13,14 @@ import { environment } from 'src/environments/environment';
 import * as fromApp from './store/app.reducer';
 import { AuthEffects } from './auth/store/auth.effects';
 import { NgbdModalContentComponent } from './shared/components/modal/modal.component';
+import { SpinnerComponent } from './shared/components/spinner/spinner.component';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
-  declarations: [AppComponent, NavbarComponent, NgbdModalContentComponent],
+  declarations: [
+    AppComponent,
+    NavbarComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -23,10 +28,10 @@ import { NgbdModalContentComponent } from './shared/components/modal/modal.compo
     StoreModule.forRoot(fromApp.appReducer),
     EffectsModule.forRoot([AuthEffects]),
     StoreDevtoolsModule.instrument({ logOnly: environment.production }),
-    NgbModule
+    NgbModule,
+    SharedModule
   ],
   providers: [],
-  bootstrap: [AppComponent],
-  entryComponents: [NgbdModalContentComponent]
+  bootstrap: [AppComponent]
 })
 export class AppModule {}

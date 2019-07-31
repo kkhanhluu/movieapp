@@ -1,4 +1,4 @@
-@import "~src/variables.scss";
+@import '~src/variables.scss';
 
 .container__custom {
   background-color: #221f1f;
@@ -98,4 +98,30 @@
       }
     }
   }
+  .pagination-container {
+    color: red;
+    ::ng-deep .pagination {
+      font-size: 1.4rem;
+      padding: 2rem 37%;
+      font-size: 1.4rem;
+      margin-bottom: 0;
+      transform: scale(1.2)
+    }
+  }
+}
+
+::ng-deep .page-link {
+  background-color: transparent !important;
+  color: white !important;
+  border: none;
+  width: 20%;
+}
+::ng-deep .page-item:hover {
+  background-color: $color-danger;
+}
+::ng-deep .page-item.active {
+  background-color: $color-danger;
+}
+::ng-deep .page-item {
+  width: 4rem;
 }

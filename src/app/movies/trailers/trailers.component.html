@@ -1,0 +1,5 @@
+<div class="container outer-trailer-container">
+  <div class="row">
+    <app-trailer [url]="(BASE_URL + v.key + '?rel=0;&autoplay-1&mute=0') | safeUrl" *ngFor="let v of videos"></app-trailer>
+  </div>
+</div>

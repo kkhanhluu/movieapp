@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 
 import { Movie } from 'src/app/shared/model/movie';
 import { CastListComponent } from '../cast-list/cast-list.component';
-import { TrailerComponent } from '../trailer/trailer.component';
+import { TrailersComponent } from '../trailers/trailers.component';
 import { SimiliarMoviesComponent } from '../similiar-movies/similiar-movies.component';
 import { IMAGE_URL } from 'src/app/shared/constants';
 import { DataServiceService } from 'src/app/shared/service/data-service.service';
@@ -50,7 +50,7 @@ export class MovieComponent implements OnInit {
     if (componentRefs instanceof CastListComponent) {
       componentRefs.castList = this.movie.credits.cast;
       this.activeTab = this.tabs.CAST;
-    } else if (componentRefs instanceof TrailerComponent) {
+    } else if (componentRefs instanceof TrailersComponent) {
       componentRefs.videos = this.movie.videos.results.slice(0, 3);
       this.activeTab = this.tabs.TRAILERS;
     } else if (componentRefs instanceof SimiliarMoviesComponent) {

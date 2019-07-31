@@ -13,6 +13,18 @@ html {
 
 body {
   box-sizing: border-box;
-  overflow-x: hidden; 
+  overflow-x: hidden;
   overscroll-behavior: none;
+}
+
+.modal-header {
+  font-size: 1.6rem;
+}
+.modal-body {
+  font-size: 1.6rem;
+}
+.modal-footer {
+  button {
+    font-size: 1.6rem;
+  }
 }

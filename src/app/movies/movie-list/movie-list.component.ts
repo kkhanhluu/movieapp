@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { FilmServiceService } from 'src/app/shared/service/film-service.service';
+import { Component } from '@angular/core';
 import { Movie } from 'src/app/shared/model/movie';
+import { DataServiceService } from 'src/app/shared/service/data-service.service';
 
 @Component({
   selector: 'app-movielist',
@@ -10,8 +10,8 @@ import { Movie } from 'src/app/shared/model/movie';
 export class MovieListComponent {
   movies: Movie[] = [];
 
-  constructor(private filmService: FilmServiceService) {
-    this.filmService
+  constructor(private dataService: DataServiceService) {
+    this.dataService
       .discoverMovies()
       .subscribe(result => (this.movies = result.results));
   }

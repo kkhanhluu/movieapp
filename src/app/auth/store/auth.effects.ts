@@ -5,7 +5,7 @@ import { mergeMap, map, catchError, tap } from 'rxjs/operators';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 
 import * as AuthActions from './auth.actions';
-import { SIGNUP_URL, LOGIN_URL } from 'src/app/shared/constants';
+import { SIGNUP_URL, LOGIN_URL, VERIFY_EMAIL } from 'src/app/shared/constants';
 import { User } from '../user.model';
 import { of } from 'rxjs';
 import { AuthServiceService } from '../auth-service.service';
@@ -69,6 +69,14 @@ export class AuthEffects {
           returnSecureToken: true
         })
         .pipe(
+          tap((authResponse: AuthResponse) => {
+            this.http
+              .post(VERIFY_EMAIL, {
+                requestType: 'VERIFY_EMAIL',
+                idToken: authResponse.idToken
+              })
+              .subscribe();
+          }),
           map((authResponse: AuthResponse) =>
             handleAuthentication(authResponse)
           ),
@@ -89,7 +97,7 @@ export class AuthEffects {
         })
         .pipe(
           tap((authRes: AuthResponse) => {
-            this.service.setLogoutTimer(+authRes.expiresIn * 1000);
+            this.service.setLogoutTimer(3600 * 1000);
           }),
           map((authRes: AuthResponse) => handleAuthentication(authRes)),
           catchError(errorRes => handleError(errorRes))
@@ -104,9 +112,7 @@ export class AuthEffects {
       const userData = JSON.parse(localStorage.getItem('user'));
       if (userData) {
         // auto logout
-        const expirationDuration =
-          new Date().getTime() - new Date(userData.expirationDate).getTime();
-        this.service.setLogoutTimer(expirationDuration);
+        this.service.setLogoutTimer(3600 * 1000);
 
         return new AuthActions.AuthenticateSuccess({
           email: userData.email,

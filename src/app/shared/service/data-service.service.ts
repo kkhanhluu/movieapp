@@ -5,18 +5,24 @@ import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { DiscoverResult } from '../model/discoverResult';
 import { Movie } from '../model/movie';
 import { Actor } from '../model/actor';
+import { UserData } from '../model/userData';
 import { environment } from 'src/environments/environment';
+import {
+  URL_MOVIE,
+  URL_DISCOVER,
+  URL_IMAGE,
+  GET_USER_DATA
+} from '../constants';
 
 @Injectable({
   providedIn: 'root'
 })
-export class FilmServiceService {
-  private API_KEY = environment.TMDBApiKey;
-  private URL_DISCOVER = 'https://api.themoviedb.org/3/discover/movie';
-  private URL_MOVIE = 'https://api.themoviedb.org/3/movie';
-  private URL_IMAGE = 'https://image.tmdb.org/t/p/w500';
-
+export class DataServiceService {
   constructor(private http: HttpClient) {}
+
+  /*
+   * Movie relevant methods
+   */
 
   discoverMovies(
     lang: string = 'en',
@@ -31,8 +37,8 @@ export class FilmServiceService {
     return this.sendRequest<DiscoverResult>(
       'GET',
       `
-      ${this.URL_DISCOVER}?api_key=${
-        this.API_KEY
+      ${URL_DISCOVER}?api_key=${
+        environment.TMDBApiKey
       }&language=${lang}&sort_by=popularity.desc&page=${page}&include_adult=true
     `
     );
@@ -41,8 +47,8 @@ export class FilmServiceService {
   getMovieById(id: number): Observable<Movie> {
     return this.sendRequest<Movie>(
       'GET',
-      `${this.URL_MOVIE}/${id}?api_key=${
-        this.API_KEY
+      `${URL_MOVIE}/${id}?api_key=${
+        environment.TMDBApiKey
       }&language=en-US&append_to_response=credits,videos`
     );
   }
@@ -51,31 +57,49 @@ export class FilmServiceService {
     return this.sendRequest(
       'GET',
       `https://api.themoviedb.org/3/person/${id}?api_key=${
-        this.API_KEY
+        environment.TMDBApiKey
       }&language=en-US`
     );
   }
 
   getImageUrl(url: string): string {
-    return `${this.URL_IMAGE}${url}`;
+    return `${URL_IMAGE}${url}`;
   }
 
   getSimilarMovie(id: number): Observable<DiscoverResult> {
     return this.sendRequest(
       'GET',
-      `${this.URL_MOVIE}/${id}/recommendations?api_key=${
-        this.API_KEY
+      `${URL_MOVIE}/${id}/recommendations?api_key=${
+        environment.TMDBApiKey
       }&language=en-US&page=1`
     );
   }
 
-  private sendRequest<T>(verb: string, url: string): Observable<T> {
+  /**
+   * User relevant methods
+   */
+
+  getCurrentUserData(idToken: string): Observable<UserData> {
+    return this.sendRequest('POST', GET_USER_DATA, { idToken });
+  }
+
+  /**
+   * method to send http request
+   * @param verb: HTTP Verb
+   * @param url: URL
+   */
+  private sendRequest<T>(
+    verb: string,
+    url: string,
+    body: any = null
+  ): Observable<T> {
     const headers = new HttpHeaders();
     headers.set('Application-Names', ['Movie-app']);
 
     return this.http
       .request<T>(verb, url, {
-        headers
+        headers,
+        body
       })
       .pipe(
         catchError((error: Response) =>

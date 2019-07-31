@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Cast } from 'src/app/shared/model/cast';
 import { ActivatedRoute } from '@angular/router';
-import { FilmServiceService } from 'src/app/shared/service/film-service.service';
 import { Actor } from 'src/app/shared/model/actor';
+import { DataServiceService } from 'src/app/shared/service/data-service.service';
 
 @Component({
   selector: 'app-star',
@@ -14,13 +13,13 @@ export class StarComponent implements OnInit {
   profilePath: string;
   constructor(
     private route: ActivatedRoute,
-    private service: FilmServiceService
+    private dataService: DataServiceService
   ) {
     this.route.params.subscribe(params => {
-      if (params['id'] != null) {
-        this.service.getActorById(params['id']).subscribe(actor => {
+      if (params.id != null) {
+        this.dataService.getActorById(params.id).subscribe(actor => {
           this.actor = actor;
-          this.profilePath = this.service.getImageUrl(actor.profile_path);
+          this.profilePath = this.dataService.getImageUrl(actor.profile_path);
         });
       }
     });

@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { FilmServiceService } from 'src/app/shared/service/film-service.service';
-import { Movie } from 'src/app/shared/model/movie';
 import { ActivatedRoute } from '@angular/router';
+
+import { Movie } from 'src/app/shared/model/movie';
 import { CastListComponent } from '../cast-list/cast-list.component';
 import { TrailerComponent } from '../trailer/trailer.component';
 import { SimiliarMoviesComponent } from '../similiar-movies/similiar-movies.component';
 import { IMAGE_URL } from 'src/app/shared/constants';
+import { DataServiceService } from 'src/app/shared/service/data-service.service';
 
 @Component({
   selector: 'app-movie',
@@ -27,7 +28,7 @@ export class MovieComponent implements OnInit {
   };
 
   constructor(
-    private service: FilmServiceService,
+    private dataService: DataServiceService,
     private route: ActivatedRoute
   ) {}
 
@@ -36,7 +37,7 @@ export class MovieComponent implements OnInit {
       const id = params.id;
       if (id != null) {
         this.id = id;
-        this.service.getMovieById(this.id).subscribe((movie: Movie) => {
+        this.dataService.getMovieById(this.id).subscribe((movie: Movie) => {
           this.movie = movie;
           this.posterPath = `${this.IMAGE_URL}${movie.poster_path}`;
           this.backdropPath = `${this.IMAGE_URL}${movie.backdrop_path}`;
